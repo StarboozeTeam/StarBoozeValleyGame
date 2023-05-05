@@ -1,0 +1,1 @@
+gilbert_walkanim_spritesheet_V2_01.png.png 1 42, gilbert_walkanim_spritesheet_V2_01.png.png 0 1, gilbert_walkanim_spritesheet_V2_03.png.png 1 105, gilbert_walkanim_spritesheet_V2_04.png.png 1 84.

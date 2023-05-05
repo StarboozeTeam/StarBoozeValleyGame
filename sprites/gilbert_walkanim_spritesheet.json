@@ -1,0 +1,141 @@
+{
+	"frames": [
+		{
+			"filename": "Walk1.png",
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 16,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 16,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 16,
+				"h": 21
+			}
+		},
+		{
+			"filename": "Walk2.png",
+			"frame": {
+				"x": 19,
+				"y": 1,
+				"w": 15,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 15,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 15,
+				"h": 21
+			}
+		},
+		{
+			"filename": "Walk3.png",
+			"frame": {
+				"x": 1,
+				"y": 24,
+				"w": 15,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 15,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 15,
+				"h": 21
+			}
+		},
+		{
+			"filename": "Walk4.png",
+			"frame": {
+				"x": 18,
+				"y": 24,
+				"w": 15,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 15,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 15,
+				"h": 21
+			}
+		},
+		{
+			"filename": "Walk5.png",
+			"frame": {
+				"x": 36,
+				"y": 1,
+				"w": 15,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 15,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 15,
+				"h": 21
+			}
+		},
+		{
+			"filename": "Walk6.png",
+			"frame": {
+				"x": 35,
+				"y": 24,
+				"w": 15,
+				"h": 21
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 15,
+				"h": 21
+			},
+			"sourceSize": {
+				"w": 15,
+				"h": 21
+			}
+		}
+	],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "Gilbert_walkAnim_spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 52,
+			"h": 46
+		},
+		"scale": "1"
+	}
+}
