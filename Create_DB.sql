@@ -14,7 +14,7 @@ CREATE TABLE upgrades (
     upgrade_name varchar(30) NOT NULL,
     upgrade_price int(10) NOT NULL,
     upgrade_multiplier int(5),
-    PRIMARY KEY (id_user)
+    PRIMARY KEY (id_upgrade)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE game (
