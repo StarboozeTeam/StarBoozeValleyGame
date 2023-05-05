@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 3000;
-
+const charactersRouter = require("./databasesetup/routes/employee");
+const path = require('path');
 
 const corsOptions = {
     origin: "*",
@@ -18,9 +19,7 @@ app.use(
     })
 );
 
-app.get("/", function(req, res) {
-    res.send("Hello Word");
-})
+app.use("/employee", charactersRouter)
 
 // Error handler middleware
 app.use((err, req, res, next) => {
@@ -41,5 +40,5 @@ var server = app.listen(8081, function () {
     console.log("Example server listening at http://$s:$s", host, port);
 })
 
+app.use("/public", express.static(path.join(__dirname, 'public')));
 
-app.use(express.static("public"));

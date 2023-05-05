@@ -171,15 +171,14 @@ let allApples = new PIXI.Container();
          pushingApples[appleFall][1] = true
          if(appleFall >= 9) {
              appleFall = 0
-             appless.parent.removeChild(appless);
+             allApples.parent.removeChild(allApples.children[0]);
              appless = new PIXI.Container();
              genApples();
              pushingApples = []
             }
         apples += 1;
-        appleFall += 1
-        })
-        
+        appleFall += 1;
+        })    
 }
 
 
