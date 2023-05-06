@@ -20,14 +20,14 @@ con.connect(function (err) {
     });
 
     sql =
-      "CREATE TABLE IF NOT EXISTS upgrades (id_upgrade int(5) NOT NULL, upgrade_name varchar(30) NOT NULL, upgrade_price int(10) NOT NULL, upgrade_multiplier int(5), PRIMARY KEY (id_upgrade))";
+      "CREATE TABLE IF NOT EXISTS upgrades (id_upgrade int(5) NOT NULL, upgrade_name varchar(30) NOT NULL, upgrade_price int(10) NOT NULL, upgrade_multiplier float(5), PRIMARY KEY (id_upgrade))";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table upgrades created");
     });
 
     sql =
-      "CREATE TABLE IF NOT EXISTS game (id_game int(1) NOT NULL, score int(10), palier_1 int(10) NOT NULL, palier_2 int(10) NOT NULL, palier_3 int(10) NOT NULL, palier_1_bool boolean DEFAULT false, palier_2_bool boolean DEFAULT false, palier_3_bool boolean DEFAULT false, PRIMARY KEY (id_game))";
+      "CREATE TABLE IF NOT EXISTS game (id_game int(1) NOT NULL auto_increment, score int(10), palier_1 int(10) NOT NULL, palier_2 int(10) NOT NULL, palier_3 int(10) NOT NULL, palier_1_bool boolean DEFAULT false, palier_2_bool boolean DEFAULT false, palier_3_bool boolean DEFAULT false, PRIMARY KEY (id_game))";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table game created");
