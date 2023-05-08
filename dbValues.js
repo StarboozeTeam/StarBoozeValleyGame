@@ -33,8 +33,8 @@ con.connect(function (err) {
     
     sql = "INSERT INTO upgrades (id_upgrade, upgrade_name,upgrade_price, upgrade_multiplier) VALUES ?";
     values = [
-      ["0", "alambic niv 1", "20", "1,2"],
-      ["1", "alambic niv 2", "40", "1,5"],
+      ["0", "alambic niv 1", "20", "1.2"],
+      ["1", "alambic niv 2", "40", "1.5"],
       ["2", "alambic niv 3", "70", "2,0"]
     ];
     con.query(sql, [values], function (err, result) {
