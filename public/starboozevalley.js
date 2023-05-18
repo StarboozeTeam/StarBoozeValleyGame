@@ -15,9 +15,29 @@ document.body.appendChild(app.view);
 // Background bleu
 // app.renderer.background.color = 0x22FFC
 
+function playMenu() {
+
+    // Ajout du background
+    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
+    preBackground.scaleMode = 'linear'
+    const background = PIXI.Sprite.from(preBackground);
+    background.anchor.x = 0.5
+    background.anchor.y = 0.5 
+    background.x = app.screen.width /2
+    background.y = app.screen.height /2
+    background.scale.x = 4
+    background.scale.y = 4
+    app.stage.addChild(background);
+  
+
+
+}
+
+playMenu();
+
 function playGame() {
 
-        // Ajout d'un texte test
+    // Ajout d'un texte test
     let myText = new PIXI.Text(`Je suis Gilbert et j'ai ${apples} pommes`);
     myText.x = 400
     app.stage.addChild(myText);
