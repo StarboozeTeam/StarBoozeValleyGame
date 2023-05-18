@@ -1,0 +1,78 @@
+{"frames": {
+
+"Walk0.png":
+{
+	"frame": {"x":0,"y":0,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk1.png":
+{
+	"frame": {"x":0,"y":21,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk2.png":
+{
+	"frame": {"x":0,"y":42,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk3.png":
+{
+	"frame": {"x":0,"y":63,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk4.png":
+{
+	"frame": {"x":0,"y":84,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk5.png":
+{
+	"frame": {"x":0,"y":105,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"Walk6.png":
+{
+	"frame": {"x":0,"y":126,"w":16,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":21},
+	"sourceSize": {"w":16,"h":21},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"Walk": ["Walk1.png","Walk2.png","Walk3.png","Walk4.png","Walk5.png","Walk6.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "gilbert_walkanim.png",
+	"format": "RGBA8888",
+	"size": {"w":16,"h":147},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a0a05d7a15f3ff1de732a52382db2deb:cee98a9ff1f089164529e5f11f98e94c:b57a075d1b40d777eddb5859f31e37d7$"
+}
+}

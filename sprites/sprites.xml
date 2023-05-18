@@ -1,0 +1,8 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="Gilbert_walkAnim_spritesheet_01.png" x="0" y="0" width="16" height="21"/>
+	<SubTexture name="Gilbert_walkAnim_spritesheet_02.png" x="18" y="0" width="14" height="21"/>
+	<SubTexture name="Gilbert_walkAnim_spritesheet_03.png" x="34" y="0" width="14" height="21"/>
+	<SubTexture name="Gilbert_walkAnim_spritesheet_04.png" x="17" y="23" width="14" height="21"/>
+	<SubTexture name="Gilbert_walkAnim_spritesheet_05.png" x="0" y="23" width="15" height="21"/>
+	<SubTexture name="Gilbert_walkAnim_spritesheet_06.png" x="33" y="23" width="14" height="21"/>
+</TextureAtlas>

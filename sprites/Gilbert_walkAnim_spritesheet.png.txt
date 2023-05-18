@@ -1,0 +1,1 @@
+Gilbert_walkAnim_spritesheet_01.png.png 1 1, Gilbert_walkAnim_spritesheet_02.png.png 19 1, Gilbert_walkAnim_spritesheet_03.png.png 36 1, Gilbert_walkAnim_spritesheet_04.png.png 1 24, Gilbert_walkAnim_spritesheet_05.png.png 18 24, Gilbert_walkAnim_spritesheet_06.png.png 35 24.
