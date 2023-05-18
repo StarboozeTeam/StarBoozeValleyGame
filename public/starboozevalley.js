@@ -84,6 +84,31 @@ function playGame() {
 
 
 
+    // Ajout du bouton Recrutement
+    const preBtnRecruit = PIXI.BaseTexture.from('sprites/btn-recruter.png')
+    preBtnRecruit.scaleMode = 'linear'
+    const btnRecruit = PIXI.Sprite.from(preBtnRecruit);
+    btnRecruit.anchor.x = 0.5
+    btnRecruit.anchor.y = 0.5
+    btnRecruit.x = app.screen.width /2 - 100
+    btnRecruit.y = 30
+    btnRecruit.scale.x = 2
+    btnRecruit.scale.y = 2
+    app.stage.addChild(btnRecruit);
+
+    // Ajout du bouton Recrutement
+    const preBtnUpg = PIXI.BaseTexture.from('sprites/btn-ameliorer.png')
+    preBtnUpg.scaleMode = 'linear'
+    const btnUpg = PIXI.Sprite.from(preBtnUpg);
+    btnUpg.anchor.x = 0.5
+    btnUpg.anchor.y = 0.5
+    btnUpg.x = app.screen.width /2 + 100
+    btnUpg.y = 30
+    btnUpg.scale.x = 2
+    btnUpg.scale.y = 2
+    app.stage.addChild(btnUpg);
+
+
 
     // Gestion de l'interactivité de l'arbre
     background.eventMode = 'dynamic';
