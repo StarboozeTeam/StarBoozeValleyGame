@@ -58,17 +58,32 @@ function playGame() {
     grange.scale.y = 2.5
     app.stage.addChild(grange);
 
-     // Ajout de l'alambic
-     const preAlambic = PIXI.BaseTexture.from('sprites/alambic_no1_baignoire.png')
-     preAlambic.scaleMode = 'linear'
-     const alambic = PIXI.Sprite.from(preAlambic);
-     alambic.anchor.x = -0.8
-     alambic.anchor.y = 0.3
-     alambic.x = app.screen.width /2
-     alambic.y = app.screen.height /1.5
-     alambic.scale.x = 2.9
-     alambic.scale.y = 2.9
-     app.stage.addChild(alambic);
+    // Ajout de l'alambic
+    const preAlambic = PIXI.BaseTexture.from('sprites/alambic_no1_baignoire.png')
+    preAlambic.scaleMode = 'linear'
+    const alambic = PIXI.Sprite.from(preAlambic);
+    alambic.anchor.x = -0.5
+    alambic.anchor.y = 0.3
+    alambic.x = app.screen.width /2
+    alambic.y = app.screen.height /1.5
+    alambic.scale.x = 2.9
+    alambic.scale.y = 2.9
+    app.stage.addChild(alambic);
+
+    // Ajout de la fusée
+    const preFusee = PIXI.BaseTexture.from('sprites/fusee.png')
+    preFusee.scaleMode = 'linear'
+    const fusee = PIXI.Sprite.from(preFusee);
+    fusee.anchor.x = -1.6
+    fusee.anchor.y = 0.5
+    fusee.x = app.screen.width /2
+    fusee.y = app.screen.height /1.88
+    fusee.scale.x = 4
+    fusee.scale.y = 4
+    app.stage.addChild(fusee);
+
+
+
 
     // Gestion de l'interactivité de l'arbre
     background.eventMode = 'dynamic';
@@ -94,6 +109,8 @@ function playGame() {
                 apple.x = Math.round(Math.random() * (app.screen.width - 100))
                 apple.y = Math.round(Math.random() * (app.screen.height - 100))
                 appless.addChild(apple)
+                
+                
                 
                 // Génération d'une liste qui stocke des données pour chaque pomme
                 for(let i = 0; i < nbAppleGen; i++) {
