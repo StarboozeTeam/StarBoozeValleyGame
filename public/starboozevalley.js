@@ -104,6 +104,31 @@ function playGame() {
 
 
 
+    // Ajout du bouton Recrutement
+    const preBtnRecruit = PIXI.BaseTexture.from('sprites/btn-recruter.png')
+    preBtnRecruit.scaleMode = 'linear'
+    const btnRecruit = PIXI.Sprite.from(preBtnRecruit);
+    btnRecruit.anchor.x = 0.5
+    btnRecruit.anchor.y = 0.5
+    btnRecruit.x = app.screen.width /2 - 100
+    btnRecruit.y = 30
+    btnRecruit.scale.x = 2
+    btnRecruit.scale.y = 2
+    app.stage.addChild(btnRecruit);
+
+    // Ajout du bouton Recrutement
+    const preBtnUpg = PIXI.BaseTexture.from('sprites/btn-ameliorer.png')
+    preBtnUpg.scaleMode = 'linear'
+    const btnUpg = PIXI.Sprite.from(preBtnUpg);
+    btnUpg.anchor.x = 0.5
+    btnUpg.anchor.y = 0.5
+    btnUpg.x = app.screen.width /2 + 100
+    btnUpg.y = 30
+    btnUpg.scale.x = 2
+    btnUpg.scale.y = 2
+    app.stage.addChild(btnUpg);
+
+
 
     // Gestion de l'interactivité de l'arbre
     background.eventMode = 'dynamic';
@@ -126,8 +151,8 @@ function playGame() {
         function genApples(nbAppleGenRuns) {
             for(let i = 0; i < nbAppleGen; i++) {
                 let apple = PIXI.Sprite.from('sprites/apple_asset.png');
-                apple.x = Math.round(Math.random() * (app.screen.width - 100))
-                apple.y = Math.round(Math.random() * (app.screen.height - 100))
+                apple.x = Math.round(333 + Math.random() * 250)
+                apple.y = Math.round(130 + Math.random() * 150)
                 appless.addChild(apple)
                 
                 apple.scale.x = 2
@@ -146,8 +171,8 @@ function playGame() {
             // Fonction qui génère 1 pomme (utilisation au click pour garder un nombre de pommes constant dans l'arbre)
             function gen1Apple() {
                 let apple = PIXI.Sprite.from('sprites/apple_asset.png');
-                apple.x = Math.round(Math.random() * (app.screen.width - 100))
-                apple.y = Math.round(Math.random() * (app.screen.height - 100))
+                apple.x = Math.round(333 + Math.random() * 250)
+                apple.y = Math.round(135 + Math.random() * 150)
                 apple.scale.x = 2
                 apple.scale.y = 2
                 appless.addChild(apple)
