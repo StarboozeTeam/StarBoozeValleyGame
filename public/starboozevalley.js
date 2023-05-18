@@ -50,10 +50,10 @@ function playGame() {
     const preGrange = PIXI.BaseTexture.from('sprites/grange-ouverte.png')
     preGrange.scaleMode = 'linear'
     const grange = PIXI.Sprite.from(preGrange);
-    grange.anchor.x = 2.5
-    grange.anchor.y = 0.35
-    grange.x = app.screen.width /2
-    grange.y = app.screen.height /2
+    grange.anchor.x = 0.5
+    grange.anchor.y = 0.5
+    grange.x = app.screen.width /9.5
+    grange.y = app.screen.height /1.75
     grange.scale.x = 2.5
     grange.scale.y = 2.5
     app.stage.addChild(grange);
@@ -62,10 +62,10 @@ function playGame() {
     const preAlambic = PIXI.BaseTexture.from('sprites/alambic_no1_baignoire.png')
     preAlambic.scaleMode = 'linear'
     const alambic = PIXI.Sprite.from(preAlambic);
-    alambic.anchor.x = -0.5
-    alambic.anchor.y = 0.3
-    alambic.x = app.screen.width /2
-    alambic.y = app.screen.height /1.5
+    alambic.anchor.x = 0.5
+    alambic.anchor.y = 0.5
+    alambic.x = app.screen.width /1.5
+    alambic.y = app.screen.height /1.4
     alambic.scale.x = 2.9
     alambic.scale.y = 2.9
     app.stage.addChild(alambic);
@@ -74,9 +74,9 @@ function playGame() {
     const preFusee = PIXI.BaseTexture.from('sprites/fusee.png')
     preFusee.scaleMode = 'linear'
     const fusee = PIXI.Sprite.from(preFusee);
-    fusee.anchor.x = -1.6
+    fusee.anchor.x = 0.5
     fusee.anchor.y = 0.5
-    fusee.x = app.screen.width /2
+    fusee.x = app.screen.width /1.15
     fusee.y = app.screen.height /1.88
     fusee.scale.x = 4
     fusee.scale.y = 4
@@ -135,7 +135,8 @@ function playGame() {
                 apple.y = Math.round(Math.random() * (app.screen.height - 100))
                 appless.addChild(apple)
                 
-                
+                apple.scale.x = 2
+                apple.scale.y = 2
                 
                 // Génération d'une liste qui stocke des données pour chaque pomme
                 for(let i = 0; i < nbAppleGen; i++) {
@@ -152,6 +153,8 @@ function playGame() {
                 let apple = PIXI.Sprite.from('sprites/apple_asset.png');
                 apple.x = Math.round(Math.random() * (app.screen.width - 100))
                 apple.y = Math.round(Math.random() * (app.screen.height - 100))
+                apple.scale.x = 2
+                apple.scale.y = 2
                 appless.addChild(apple)
                 allApples.addChild(appless)
                 let pushingApple = false
@@ -236,7 +239,7 @@ function playGame() {
                     image: "sprites/gilbert_walkanim.png",
                     "format": "RGBA8888",
                     "size": {"w":16,"h":147},
-                    "scale": "0.1",
+                    "scale": "0.2",
                     "smartupdate": "$TexturePacker:SmartUpdate:a0a05d7a15f3ff1de732a52382db2deb:cee98a9ff1f089164529e5f11f98e94c:b57a075d1b40d777eddb5859f31e37d7$"
                 }
                 }
@@ -250,7 +253,7 @@ function playGame() {
                 anim.animationSpeed = 0.1666
                 anim.play()
                 anim.x = app.screen.width / 2;
-                anim.y = app.screen.height / 2;
+                anim.y = 425 ;
                 app.stage.addChild(anim)
                 
                 const groove = 5 // Vitesse de marche de gilbert et conséquemment de déplacement pour les pommes
