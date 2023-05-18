@@ -3,7 +3,9 @@
 const application = PIXI.Application;
 const app = new application({
     width:912,
-    height:512});
+    height:512,
+    antialias: false
+});
 let apples = 0
 const graphics = PIXI.Graphics;
 
@@ -21,10 +23,52 @@ function playGame() {
     app.stage.addChild(myText);
 
     // Ajout du background
-    const background = PIXI.Sprite.from('sprites/orig.png');
+    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
+    preBackground.scaleMode = 'linear'
+    const background = PIXI.Sprite.from(preBackground);
     background.anchor.x = 0.5
-    background.anchor.y = 0.5
+    background.anchor.y = 0.5 
+    background.x = app.screen.width /2
+    background.y = app.screen.height /2
+    background.scale.x = 4
+    background.scale.y = 4
     app.stage.addChild(background);
+
+    // Ajout de l'arbre
+    const preArbre = PIXI.BaseTexture.from('sprites/arbre.png')
+    preArbre.scaleMode = 'linear'
+    const arbre = PIXI.Sprite.from(preArbre);
+    arbre.anchor.x = 0.5
+    arbre.anchor.y = 0.5 
+    arbre.x = app.screen.width /2
+    arbre.y = app.screen.height /2
+    arbre.scale.x = 3.9
+    arbre.scale.y = 3.9
+    app.stage.addChild(arbre);
+
+    // Ajout de la grange
+    const preGrange = PIXI.BaseTexture.from('sprites/grange-ouverte.png')
+    preGrange.scaleMode = 'linear'
+    const grange = PIXI.Sprite.from(preGrange);
+    grange.anchor.x = 2.5
+    grange.anchor.y = 0.35
+    grange.x = app.screen.width /2
+    grange.y = app.screen.height /2
+    grange.scale.x = 2.5
+    grange.scale.y = 2.5
+    app.stage.addChild(grange);
+
+     // Ajout de l'alambic
+     const preAlambic = PIXI.BaseTexture.from('sprites/alambic_no1_baignoire.png')
+     preAlambic.scaleMode = 'linear'
+     const alambic = PIXI.Sprite.from(preAlambic);
+     alambic.anchor.x = -0.8
+     alambic.anchor.y = 0.3
+     alambic.x = app.screen.width /2
+     alambic.y = app.screen.height /1.5
+     alambic.scale.x = 2.9
+     alambic.scale.y = 2.9
+     app.stage.addChild(alambic);
 
     // Gestion de l'interactivité de l'arbre
     background.eventMode = 'dynamic';
