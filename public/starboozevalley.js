@@ -106,8 +106,8 @@ function playGame() {
         function genApples(nbAppleGenRuns) {
             for(let i = 0; i < nbAppleGen; i++) {
                 let apple = PIXI.Sprite.from('sprites/apple_asset.png');
-                apple.x = Math.round(Math.random() * (app.screen.width - 100))
-                apple.y = Math.round(Math.random() * (app.screen.height - 100))
+                apple.x = Math.round(333 + Math.random() * 250)
+                apple.y = Math.round(130 + Math.random() * 150)
                 appless.addChild(apple)
                 
                 
@@ -125,8 +125,8 @@ function playGame() {
             // Fonction qui génère 1 pomme (utilisation au click pour garder un nombre de pommes constant dans l'arbre)
             function gen1Apple() {
                 let apple = PIXI.Sprite.from('sprites/apple_asset.png');
-                apple.x = Math.round(Math.random() * (app.screen.width - 100))
-                apple.y = Math.round(Math.random() * (app.screen.height - 100))
+                apple.x = Math.round(333 + Math.random() * 250)
+                apple.y = Math.round(135 + Math.random() * 150)
                 appless.addChild(apple)
                 allApples.addChild(appless)
                 let pushingApple = false

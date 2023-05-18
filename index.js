@@ -40,5 +40,5 @@ var server = app.listen(8081, function () {
     console.log("Example server listening at http://$s:$s", host, port);
 })
 
-app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use(express.static("public"));
 
