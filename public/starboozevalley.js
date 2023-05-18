@@ -15,25 +15,7 @@ document.body.appendChild(app.view);
 // Background bleu
 // app.renderer.background.color = 0x22FFC
 
-function playMenu() {
 
-    // Ajout du background
-    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
-    preBackground.scaleMode = 'linear'
-    const background = PIXI.Sprite.from(preBackground);
-    background.anchor.x = 0.5
-    background.anchor.y = 0.5 
-    background.x = app.screen.width /2
-    background.y = app.screen.height /2
-    background.scale.x = 4
-    background.scale.y = 4
-    app.stage.addChild(background);
-  
-
-
-}
-
-playMenu();
 
 function playGame() {
 
@@ -127,6 +109,21 @@ function playGame() {
     btnUpg.scale.x = 2
     btnUpg.scale.y = 2
     app.stage.addChild(btnUpg);
+
+    
+    // Ajout du bouton croix pr revenir au menu principal
+    const prebtncroix = PIXI.BaseTexture.from('sprites/btn-croix.png')
+    prebtncroix.scaleMode = 'linear'
+    const btncroix = PIXI.Sprite.from(prebtncroix);
+    btncroix.anchor.x = 0.5
+    btncroix.anchor.y = 0.5
+    btncroix.x = app.screen.width /2 + 400
+    btncroix.y = 30
+    btncroix.scale.x = 2
+    btncroix.scale.y = 2
+    app.stage.addChild(btncroix);
+
+    
 
 
 
@@ -325,8 +322,87 @@ function playGame() {
 
 
     init();
+
+     // Gestion du bouton croix
+    btncroix.eventMode = 'dynamic';
+    btncroix.buttonMode = true;
+
+    //Fonction générée pour ouvrir à la page menu 
+    btncroix.on('pointerdown', function playMenu() {
+        
+    
+  
+    //Ajout du background
+    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
+    preBackground.scaleMode = 'linear'
+    const background = PIXI.Sprite.from(preBackground);
+    background.anchor.x = 0.5
+    background.anchor.y = 0.5 
+    background.x = app.screen.width /2
+    background.y = app.screen.height /2
+    background.scale.x = 4
+    background.scale.y = 4
+    app.stage.addChild(background);
+
+
+    //Ajout du bouton nouvelle partie
+
+    const preNouvellepartie = PIXI.BaseTexture.from('sprites/nouvelle_partie.png')
+    preNouvellepartie.scaleMode = 'linear'
+    const nouvellepartie = PIXI.Sprite.from(preNouvellepartie);
+    nouvellepartie.anchor.x = 0.5
+    nouvellepartie.anchor.y = 0.5
+    nouvellepartie.x = app.screen.width /2
+    nouvellepartie.y = app.screen.height /2.5
+    nouvellepartie.scale.x = 2
+    nouvellepartie.scale.y = 2
+    app.stage.addChild(nouvellepartie);
+
+
+
+    
+
+    //Ajout du bouton charger une partie
+
+    const preChargerpartie = PIXI.BaseTexture.from('sprites/chargerpartie.png')
+    preChargerpartie.scaleMode = 'linear'
+    const chargerpartie = PIXI.Sprite.from(preChargerpartie);
+    chargerpartie.anchor.x = 0.5
+    chargerpartie.anchor.y = 0.5
+    chargerpartie.x = app.screen.width /2
+    chargerpartie.y = app.screen.height /2
+    chargerpartie.scale.x = 2
+    chargerpartie.scale.y = 2
+    app.stage.addChild(chargerpartie);
+
+    //Ajout du bouton règles
+
+    const preRegles = PIXI.BaseTexture.from('sprites/regles_bouton.png')
+    preRegles.scaleMode = 'linear'
+    const regles = PIXI.Sprite.from(preRegles);
+    regles.anchor.x = 0.5
+    regles.anchor.y = 0.5
+    regles.x = app.screen.width /2
+    regles.y = app.screen.height /1.68
+    regles.scale.x = 2
+    regles.scale.y = 2
+    app.stage.addChild(regles);
+
+    
+
+    //Ajout du bouton quitter
+
+    const preQuitter = PIXI.BaseTexture.from('sprites/btn-quitter-long.png')
+    preQuitter.scaleMode = 'linear'
+    const quitter = PIXI.Sprite.from(preQuitter);
+    quitter.anchor.x = 0.5
+    quitter.anchor.y = 0.5
+    quitter.x = app.screen.width /2
+    quitter.y = app.screen.height /1.45
+    quitter.scale.x = 2
+    quitter.scale.y = 2
+    app.stage.addChild(quitter);
+
+})
 }
 playGame();
-
-
-        
