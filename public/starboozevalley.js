@@ -6,7 +6,8 @@ const app = new application({
     height:512,
     antialias: false
 });
-let apples = 0
+let apples = 0 // Compteur de clicks
+let appleFall = 0 // Compteur de pommes sur l'écran
 const graphics = PIXI.Graphics;
 
 // Ajout de l'application au body
@@ -33,6 +34,10 @@ function playGame() {
     background.scale.x = 4
     background.scale.y = 4
     app.stage.addChild(background);
+
+    // GOOAAALLL
+    gameGoal = 150
+
 
     // Ajout de l'arbre
     const preArbre = PIXI.BaseTexture.from('sprites/arbre.png')
@@ -80,7 +85,11 @@ function playGame() {
     fusee.y = app.screen.height /1.88
     fusee.scale.x = 4
     fusee.scale.y = 4
-    app.stage.addChild(fusee);
+    fusee.zIndex = 5
+    fuseeEtAlcool = new PIXI.Container()
+    fuseeEtAlcool.sortableChildren = 'True'
+    fuseeEtAlcool.addChild(fusee)
+    app.stage.addChild(fuseeEtAlcool);
 
 
 
@@ -96,7 +105,9 @@ function playGame() {
     btnRecruit.scale.y = 2
     app.stage.addChild(btnRecruit);
 
-    // Ajout du bouton Recrutement
+
+
+    // Ajout du bouton améliorer
     const preBtnUpg = PIXI.BaseTexture.from('sprites/btn-ameliorer.png')
     preBtnUpg.scaleMode = 'linear'
     const btnUpg = PIXI.Sprite.from(preBtnUpg);
@@ -121,12 +132,29 @@ function playGame() {
     async function init() {
 
         // Initialisation de des variables
-        let appleFall = 0 // Compteur de pommes sur l'écran
         nbAppleGen = 10 // Nb de pommes générées intialement
         nbAppleGenRuns = 0 // Compteur de pommes 
         let allApples = new PIXI.Container(); // Container pour gérer les pommes
         let appleBehaviourControl = [] // Liste de données par pomme
-            
+        
+         // Fonction d'interactivité du background                     
+        function bob() {
+            appless.children[appleFall].y = anim.y
+            appleBehaviourControl[appleFall][1] = true
+            gen1Apple();
+            apples += 1;
+            appleFall += 1;
+            ethanolHeight = 150 * apples/gameGoal
+            console.log(ethanolHeight)
+            myRectangle = PIXI.Sprite.from('sprites/BoozeRectangle.png')
+            myRectangle.x = 765
+            myRectangle.y = 359
+            // myRectangle.anchor.y = -1
+            myRectangle.scale.y = - ethanolHeight/150
+            myRectangle.zIndex = 2
+            fuseeEtAlcool.addChild(myRectangle)
+            app.stage.addChild(fuseeEtAlcool)
+        } 
         // Fonction qui génère les pommes initiales
         function genApples(nbAppleGenRuns) {
             for(let i = 0; i < nbAppleGen; i++) {
@@ -268,7 +296,6 @@ function playGame() {
                     anim.x += groove
                     for (let i = 0; i < appless.children.length; i++) {
                         if (appless.children[i].x >= anim.x -10 && appless.children[i].x <= anim.x + 10 && movingRight == true && appleBehaviourControl[i][1] == true) {
-                            console.log('?');
                             appleBehaviourControl[i][0] = true
                         }
                         if (appleBehaviourControl[i][0] == true && appleBehaviourControl[i][1] == true) {
@@ -286,21 +313,23 @@ function playGame() {
                     }
                 }
                 // Fonction lancée au click qui gère le changement de  comportement des pommes au click
-                background.on('pointerdown', function() {
-                    console.log(appleFall)
-                    myText.text = `Je suis Gilbert et j'ai ${apples} pommes`;
-                    appless.children[appleFall].y = anim.y
-                    appleBehaviourControl[appleFall][1] = true
-                    gen1Apple();
-                    apples += 1;
-                    appleFall += 1;
-                    // for(let i = 0; i < appless.children.length; i++) {
-                    //     if(appless.children[i].x > app.screen.width) {
-                    //         appless.removeChild(appless.children[i])
-                    //         appleFall -= 1
-                    //     }
-                    // }
-                })    
+                background.on('pointerdown', bob)
+                
+                // Interactivité du bouton recrutement
+                btnRecruit.eventMode = 'dynamic';
+                btnRecruit.buttonMode = true;
+                btnRecruit.on('pointerdown', function() {
+                    app.ticker.add(delta => loop2(delta))
+                })
+                let tickerCounter = 0
+                function loop2(delta) {
+                    tickerCounter += 1
+                    if(tickerCounter > 120 ) {
+                        tickerCounter = 0
+                        console.log(`I'm working here`)
+                        bob()
+                    }
+                }
     }
 
 
