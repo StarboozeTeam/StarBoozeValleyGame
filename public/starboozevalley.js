@@ -16,6 +16,7 @@ document.body.appendChild(app.view);
 // Background bleu
 // app.renderer.background.color = 0x22FFC
 
+let posouvrier = app.screen.width / 2 - 90
 
 
 function playGame() {
@@ -354,6 +355,84 @@ function playGame() {
                         ethanolHeight = apples/gameGoal;
                         myRectangle.scale.y = - ethanolHeight
                         console.log(`WHUT ${ethanolHeight}`)
+                        
+
+                                    // Données json pour l'animation de l'ouvrier
+                        const ouvrierData = {"frames": {
+
+                            "Ouvrier 1.png":
+                            {
+                                "frame": {"x":0,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier2.png":
+                            {
+                                "frame": {"x":21,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier3.png":
+                            {
+                                "frame": {"x":42,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier4.png":
+                            {
+                                "frame": {"x":63,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier5.png":
+                            {
+                                "frame": {"x":84,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            }},
+                            animations: {
+                                work: ["Ouvrier 1.png","Ouvrier2.png","Ouvrier3.png","Ouvrier4.png","Ouvrier5.png"]
+                            },
+                            "meta": {
+                                "app": "https://www.codeandweb.com/texturepacker",
+                                "version": "1.1",
+                                image: "sprites/ouvrier_anim_spritesheet.png",
+                                "format": "RGBA8888",
+                                "size": {"w":105,"h":21},
+                                "scale": "0.3",
+                                "smartupdate": "$TexturePacker:SmartUpdate:52ce1cb0a4fb1a63923d8ed3362b62c3:f396795c0819adb923d2c5f1dc299af8:96063ab88e99298b7ee844fa68fd62fc$"
+                            }
+                            }
+                            
+
+                        async function ouvriage() { 
+                            // Gestion des textures et de l'animation de Gilbert
+                                texouvrier = PIXI.BaseTexture.from(ouvrierData.meta.image)
+                                texouvrier.scaleMode = 'linear'
+                                const spriteOuvrier = new PIXI.Spritesheet(texouvrier, ouvrierData);
+                                await spriteOuvrier.parse();
+                                const animouvrier =  new PIXI.AnimatedSprite(spriteOuvrier.animations.work);
+                                animouvrier.animationSpeed = 0.1666
+                                animouvrier.play()
+                                animouvrier.x = posouvrier;
+                                animouvrier.y = 350 ;
+                                app.stage.addChild(animouvrier)
+                                posouvrier += 25
+
+                            }
+                            ouvriage()
+
+
                         } else {
                             console.log('Not enough apples');
                         }
