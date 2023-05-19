@@ -8,6 +8,7 @@ const app = new application({
 });
 let apples = 0 // Compteur de clicks
 let appleFall = 0 // Compteur de pommes sur l'écran
+moultipass = 1
 const graphics = PIXI.Graphics;
 
 // Ajout de l'application au body
@@ -86,6 +87,7 @@ function playGame() {
     fusee.zIndex = 5
     fuseeEtAlcool = new PIXI.Container()
     fuseeEtAlcool.sortableChildren = 'True'
+    app.stage.sortableChildren = 'True'
     fuseeEtAlcool.addChild(fusee)
     app.stage.addChild(fuseeEtAlcool);
 
@@ -155,7 +157,7 @@ function playGame() {
             appless.children[appleFall].y = anim.y
             appleBehaviourControl[appleFall][1] = true
             gen1Apple();
-            apples += 1;
+            apples += 1 * moultipass;
             appleFall += 1;
             ethanolHeight = apples/gameGoal
             console.log(ethanolHeight)
@@ -301,6 +303,7 @@ function playGame() {
                 anim.play()
                 anim.x = app.screen.width / 2;
                 anim.y = 425 ;
+                anim.zIndex = 100
                 app.stage.addChild(anim)
                 
                 const groove = 5 // Vitesse de marche de gilbert et conséquemment de déplacement pour les pommes
@@ -336,7 +339,7 @@ function playGame() {
                 
                 // Texte du prix du recrutement
                 employeePrice = 10 // A BACKER
-                    // Ajout d'un texte test
+                    // Ajout d'un texte prix
                 let employeePriceText = new PIXI.Text(`${employeePrice}`);
                 employeePriceText.x = 385
                 employeePriceText.y = 16
@@ -446,7 +449,60 @@ function playGame() {
                         bob()
                     }
                 }
-    }
+                // Texte du bouton upgrade
+                let prixUpgrade = 20
+                let upgradeText = new PIXI.Text(`${prixUpgrade}`)
+                upgradeText.x = 585
+                upgradeText.y = 16
+                app.stage.addChild(upgradeText)
+
+                // Interactivité du bouton upgrade
+                let nbUpg = 0
+                btnUpg.eventMode = 'dynamic'
+                btnUpg.buttonMode = true
+                btnUpg.on('pointerdown', function() {
+                    if(apples >= prixUpgrade) {
+                        nbUpg += 1
+                        console.log('IZ DIS REAL LIFE')
+                        app.stage.removeChild(alambic)
+                        apples = apples - prixUpgrade
+                        prixUpgrade = prixUpgrade * 2.5
+                        upgradeText.text = `${prixUpgrade}`
+                        ethanolHeight = apples/gameGoal;
+                        myRectangle.scale.y = - ethanolHeight
+                        console.log(`WHUT ${ethanolHeight}`)
+                        if(nbUpg == 1) {
+                            const preAlambic2 = PIXI.BaseTexture.from('sprites/alambic_no2_bois.png')
+                            preAlambic2.scaleMode = 'linear'
+                            window.alambic2 = PIXI.Sprite.from(preAlambic2)
+                            alambic2.anchor.x = 0.5
+                            alambic2.anchor.y = 0.5
+                            alambic2.x = app.screen.width /1.5
+                            alambic2.y = app.screen.height /1.4
+                            alambic2.scale.x = 2.9
+                            alambic2.scale.y = 2.9
+                            app.stage.addChild(alambic2)
+                        }
+                        if(nbUpg == 2) {
+                            app.stage.removeChild(alambic2)
+                            const prealambic3 = PIXI.BaseTexture.from('sprites/alambic_no3_cuivre.png')
+                            prealambic3.scaleMode = 'linear'
+                            const alambic3 = PIXI.Sprite.from(prealambic3)
+                            alambic3.anchor.x = 0.5
+                            alambic3.anchor.y = 0.5
+                            alambic3.x = app.screen.width /1.5
+                            alambic3.y = app.screen.height /1.4
+                            alambic3.scale.x = 2.9
+                            alambic3.scale.y = 2.9
+                            app.stage.addChild(alambic3);
+                            }
+                        moultipass += 0.2
+
+                        }
+
+                })
+
+    }           
 
 
     init();
