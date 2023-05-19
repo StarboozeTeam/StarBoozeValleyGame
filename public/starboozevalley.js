@@ -20,11 +20,6 @@ document.body.appendChild(app.view);
 
 function playGame() {
 
-    // Ajout d'un texte test
-    let myText = new PIXI.Text(`Je suis Gilbert et j'ai ${apples} pommes`);
-    myText.x = 400
-    app.stage.addChild(myText);
-
     // Ajout du background
     const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
     preBackground.scaleMode = 'linear'
@@ -161,13 +156,14 @@ function playGame() {
             gen1Apple();
             apples += 1;
             appleFall += 1;
-            ethanolHeight = 150 * apples/gameGoal
+            ethanolHeight = apples/gameGoal
             console.log(ethanolHeight)
+            console.log(`J'ai ${apples} pommes`)
             myRectangle = PIXI.Sprite.from('sprites/BoozeRectangle.png')
             myRectangle.x = 765
             myRectangle.y = 359
             // myRectangle.anchor.y = -1
-            myRectangle.scale.y = - ethanolHeight/150
+            myRectangle.scale.y = - ethanolHeight
             myRectangle.zIndex = 2
             fuseeEtAlcool.addChild(myRectangle)
             app.stage.addChild(fuseeEtAlcool)
@@ -332,12 +328,31 @@ function playGame() {
                 // Fonction lancée au click qui gère le changement de  comportement des pommes au click
                 background.on('pointerdown', bob)
                 
+                // Texte du prix du recrutement
+                employeePrice = 10 // A BACKER
+                    // Ajout d'un texte test
+                let employeePriceText = new PIXI.Text(`${employeePrice}`);
+                employeePriceText.x = 385
+                employeePriceText.y = 16
+                app.stage.addChild(employeePriceText);
+
+
                 // Interactivité du bouton recrutement
                 btnRecruit.eventMode = 'dynamic';
                 btnRecruit.buttonMode = true;
                 btnRecruit.on('pointerdown', function() {
-                    app.ticker.add(delta => loop2(delta))
-                })
+                    if(apples >= employeePrice) {
+                        app.ticker.add(delta => loop2(delta))
+                        apples = apples - employeePrice
+                        employeePrice = employeePrice * 2
+                        employeePriceText.text = `${employeePrice}`
+                        ethanolHeight = apples/gameGoal;
+                        myRectangle.scale.y = - ethanolHeight
+                        console.log(`WHUT ${ethanolHeight}`)
+                        } else {
+                            console.log('Not enough apples');
+                        }
+                    })
                 let tickerCounter = 0
                 function loop2(delta) {
                     tickerCounter += 1
@@ -357,10 +372,11 @@ function playGame() {
     btncroix.buttonMode = true;
 
     //Fonction générée pour ouvrir à la page menu 
-    btncroix.on('pointerdown', function playMenu() {
-        
+    btncroix.on('pointerdown', playMenu) 
     
-  
+}
+
+function playMenu(){
     //Ajout du background
     const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
     preBackground.scaleMode = 'linear'
@@ -387,7 +403,10 @@ function playGame() {
     nouvellepartie.scale.y = 2
     app.stage.addChild(nouvellepartie);
 
-
+    // Interactivité du bouton nouvelle partie
+    nouvellepartie.eventMode = 'dynamic';
+    nouvellepartie.buttonMode = true;
+    nouvellepartie.on('pointerdown', playGame)
 
     
 
@@ -431,7 +450,5 @@ function playGame() {
     quitter.scale.x = 2
     quitter.scale.y = 2
     app.stage.addChild(quitter);
-
-})
-}
-playGame();
+    }
+playMenu();   
