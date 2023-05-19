@@ -17,6 +17,7 @@ document.body.appendChild(app.view);
 // Background bleu
 // app.renderer.background.color = 0x22FFC
 
+let posouvrier = app.screen.width / 2 - 90
 
 
 function playGame() {
@@ -357,6 +358,84 @@ function playGame() {
                         ethanolHeight = apples/gameGoal;
                         myRectangle.scale.y = - ethanolHeight
                         console.log(`WHUT ${ethanolHeight}`)
+                        
+
+                                    // Données json pour l'animation de l'ouvrier
+                        const ouvrierData = {"frames": {
+
+                            "Ouvrier 1.png":
+                            {
+                                "frame": {"x":0,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier2.png":
+                            {
+                                "frame": {"x":21,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier3.png":
+                            {
+                                "frame": {"x":42,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier4.png":
+                            {
+                                "frame": {"x":63,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            },
+                            "Ouvrier5.png":
+                            {
+                                "frame": {"x":84,"y":0,"w":21,"h":21},
+                                "rotated": false,
+                                "trimmed": false,
+                                "spriteSourceSize": {"x":0,"y":0,"w":21,"h":21},
+                                "sourceSize": {"w":21,"h":21}
+                            }},
+                            animations: {
+                                work: ["Ouvrier 1.png","Ouvrier2.png","Ouvrier3.png","Ouvrier4.png","Ouvrier5.png"]
+                            },
+                            "meta": {
+                                "app": "https://www.codeandweb.com/texturepacker",
+                                "version": "1.1",
+                                image: "sprites/ouvrier_anim_spritesheet.png",
+                                "format": "RGBA8888",
+                                "size": {"w":105,"h":21},
+                                "scale": "0.3",
+                                "smartupdate": "$TexturePacker:SmartUpdate:52ce1cb0a4fb1a63923d8ed3362b62c3:f396795c0819adb923d2c5f1dc299af8:96063ab88e99298b7ee844fa68fd62fc$"
+                            }
+                            }
+                            
+
+                        async function ouvriage() { 
+                            // Gestion des textures et de l'animation de Gilbert
+                                texouvrier = PIXI.BaseTexture.from(ouvrierData.meta.image)
+                                texouvrier.scaleMode = 'linear'
+                                const spriteOuvrier = new PIXI.Spritesheet(texouvrier, ouvrierData);
+                                await spriteOuvrier.parse();
+                                const animouvrier =  new PIXI.AnimatedSprite(spriteOuvrier.animations.work);
+                                animouvrier.animationSpeed = 0.1666
+                                animouvrier.play()
+                                animouvrier.x = posouvrier;
+                                animouvrier.y = 350 ;
+                                app.stage.addChild(animouvrier)
+                                posouvrier += 25
+
+                            }
+                            ouvriage()
+
+
                         } else {
                             console.log('Not enough apples');
                         }
@@ -432,8 +511,6 @@ function playGame() {
     btncroix.eventMode = 'dynamic';
     btncroix.buttonMode = true;
 
-    //Gestion du bouton nouvelle partie
-
     //Fonction générée pour ouvrir à la page menu 
     btncroix.on('pointerdown', playMenu) 
     
@@ -499,7 +576,11 @@ function playMenu(){
     regles.scale.y = 2
     app.stage.addChild(regles);
 
-    
+    // Interactivité du bouton règles
+    regles.eventMode = 'dynamic';
+    regles.buttonMode = true;
+    regles.on('pointerdown', playRegles)
+ 
 
     //Ajout du bouton quitter
 
@@ -514,4 +595,86 @@ function playMenu(){
     quitter.scale.y = 2
     app.stage.addChild(quitter);
     }
-playMenu();   
+
+playMenu();
+
+function playRegles(){
+
+    //Ajout du background
+    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
+    preBackground.scaleMode = 'linear'
+    const background = PIXI.Sprite.from(preBackground);
+    background.anchor.x = 0.5
+    background.anchor.y = 0.5 
+    background.x = app.screen.width /2
+    background.y = app.screen.height /2
+    background.scale.x = 4
+    background.scale.y = 4
+    app.stage.addChild(background);
+
+    //Ajout du pop up règles 
+
+    const prePopup = PIXI.BaseTexture.from('sprites/pop-up-regles.png')
+    prePopup.scaleMode = 'linear'
+    const popup = PIXI.Sprite.from(prePopup);
+    popup.anchor.x = 0.5
+    popup.anchor.y = 0.5 
+    popup.x = app.screen.width /2
+    popup.y = app.screen.height /2
+    popup.scale.x = 4
+    popup.scale.y = 4
+    app.stage.addChild(popup);
+
+    //Ajout du texte des règles 
+
+    // Ajout d'un texte test
+    PIXI.Assets.load('sprites/coders_crux.ttf').then(() => {
+        let reglesText = new PIXI.BitmapText(`Comment jouer ?\n
+    Au début de la partie, le joueur ne dispose que du clic pour cueillir les fruits en cliquant dessus. Gilbert se charge alors de les amener à l’alambic pour transformer les fruits en alcool.
+        L’alcool sert de ressource principale nécessaire au décollage de la fusée mais également de monnaie principale du jeu, permettant au joueur d’acheter des ouvriers, qui, comme les clics, vont cueillir les fruits dans l’arbre, ainsi que des améliorations pour l’alambic. L’alambic permet quant à lui de bénéficier d’un multiplicateur sur la production d’alcool au gré des améliorations qui auront été apportées`,{
+            fontFamily : 'Arial',
+            fontSize: 48,
+            fontStyle: 'regular',
+            fill : '#563F33',
+            align : 'center',
+            wordWrap : true,
+            wordWrapWidth: 280,
+        },
+            
+
+        );
+
+    reglesText.anchor.x = 0.5
+    reglesText.anchor.y = 0.5 
+    reglesText.x = app.screen.width /2
+    reglesText.y = app.screen.height /2
+    reglesText.scale.x = 1
+    reglesText.scale.y = 1
+    app.stage.addChild(reglesText); 
+
+    // reglesText.updateText();
+    // reglesText.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+
+    });
+
+    // Ajout du bouton croix pr revenir au menu principal
+    const prebtncroix = PIXI.BaseTexture.from('sprites/btn-croix.png')
+    prebtncroix.scaleMode = 'linear'
+    const btncroix = PIXI.Sprite.from(prebtncroix);
+    btncroix.anchor.x = 0.5
+    btncroix.anchor.y = 0.5
+    btncroix.x = app.screen.width /2 + 400
+    btncroix.y = 30
+    btncroix.scale.x = 2
+    btncroix.scale.y = 2
+    app.stage.addChild(btncroix);
+   
+    // Gestion du bouton croix
+    btncroix.eventMode = 'dynamic';
+    btncroix.buttonMode = true;
+
+    //Fonction générée pour ouvrir à la page menu 
+    btncroix.on('pointerdown', playMenu) 
+
+        
+}
