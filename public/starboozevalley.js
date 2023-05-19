@@ -147,13 +147,16 @@ function playGame() {
         // Fonction qui génère les pommes initiales
         function genApples(nbAppleGenRuns) {
             for(let i = 0; i < nbAppleGen; i++) {
-                let apple = PIXI.Sprite.from('sprites/apple_asset.png');
+                let preApple = PIXI.BaseTexture.from('sprites/apple_asset.png')
+                preApple.scaleMode ='linear'
+                let apple = PIXI.Sprite.from(preApple);
                 apple.x = Math.round(333 + Math.random() * 250)
                 apple.y = Math.round(130 + Math.random() * 150)
                 appless.addChild(apple)
                 
                 apple.scale.x = 2
                 apple.scale.y = 2
+
                 
                 // Génération d'une liste qui stocke des données pour chaque pomme
                 for(let i = 0; i < nbAppleGen; i++) {
@@ -167,7 +170,9 @@ function playGame() {
             }
             // Fonction qui génère 1 pomme (utilisation au click pour garder un nombre de pommes constant dans l'arbre)
             function gen1Apple() {
-                let apple = PIXI.Sprite.from('sprites/apple_asset.png');
+                let preApple = PIXI.BaseTexture.from('sprites/apple_asset.png')
+                preApple.scaleMode ='linear'
+                let apple = PIXI.Sprite.from(preApple);
                 apple.x = Math.round(333 + Math.random() * 250)
                 apple.y = Math.round(135 + Math.random() * 150)
                 apple.scale.x = 2
@@ -323,9 +328,11 @@ function playGame() {
 
     init();
 
-     // Gestion du bouton croix
+    // Gestion du bouton croix
     btncroix.eventMode = 'dynamic';
     btncroix.buttonMode = true;
+
+    //Gestion du bouton nouvelle partie
 
     //Fonction générée pour ouvrir à la page menu 
     btncroix.on('pointerdown', function playMenu() {
