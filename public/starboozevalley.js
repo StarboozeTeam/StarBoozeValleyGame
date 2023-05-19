@@ -507,6 +507,11 @@ function playMenu(){
     chargerpartie.scale.y = 2
     app.stage.addChild(chargerpartie);
 
+    // Interactivité du bouton nouvelle partie
+    chargerpartie.eventMode = 'dynamic';
+    chargerpartie.buttonMode = true;
+    chargerpartie.on('pointerdown', playParties)
+
     //Ajout du bouton règles
 
     const preRegles = PIXI.BaseTexture.from('sprites/regles_bouton.png')
@@ -621,4 +626,100 @@ function playRegles(){
     btncroix.on('pointerdown', playMenu) 
 
         
-}
+    }
+
+playRegles();
+
+function playParties() {
+
+    //Ajout du background
+    const preBackground = PIXI.BaseTexture.from('sprites/background_out_game.png')
+    preBackground.scaleMode = 'linear'
+    const background = PIXI.Sprite.from(preBackground);
+    background.anchor.x = 0.5
+    background.anchor.y = 0.5 
+    background.x = app.screen.width /2
+    background.y = app.screen.height /2
+    background.scale.x = 4
+    background.scale.y = 4
+    app.stage.addChild(background);
+
+    //Ajout du pop up règles 
+
+    const prePopup = PIXI.BaseTexture.from('sprites/pop-up-regles.png')
+    prePopup.scaleMode = 'linear'
+    const popup = PIXI.Sprite.from(prePopup);
+    popup.anchor.x = 0.5
+    popup.anchor.y = 0.5 
+    popup.x = app.screen.width /2
+    popup.y = app.screen.height /2
+    popup.scale.x = 4
+    popup.scale.y = 4
+    app.stage.addChild(popup);
+
+    //Ajout du bouton première partie 
+
+    const prePremierepartie = PIXI.BaseTexture.from('sprites/partie-1-long.png')
+    prePremierepartie.scaleMode = 'linear'
+    const premierepartie = PIXI.Sprite.from(prePremierepartie);
+    premierepartie.anchor.x = 0.5
+    premierepartie.anchor.y = 0.5
+    premierepartie.x = app.screen.width /2
+    premierepartie.y = app.screen.height /2.5
+    premierepartie.scale.x = 2
+    premierepartie.scale.y = 2
+    app.stage.addChild(premierepartie);
+
+    //Ajout du bouton deuxième partie
+
+    const preDeuxiemepartie = PIXI.BaseTexture.from('sprites/partie-2-long.png')
+    preDeuxiemepartie.scaleMode = 'linear'
+    const deuxiemepartie = PIXI.Sprite.from(preDeuxiemepartie);
+    deuxiemepartie.anchor.x = 0.5
+    deuxiemepartie.anchor.y = 0.5
+    deuxiemepartie.x = app.screen.width /2
+    deuxiemepartie.y = app.screen.height /2 
+    deuxiemepartie.scale.x = 2
+    deuxiemepartie.scale.y = 2
+    app.stage.addChild(deuxiemepartie);
+
+    //Ajout du bouton troisieme partie
+
+    const preTroisiemepartie = PIXI.BaseTexture.from('sprites/partie-3-long.png')
+    preTroisiemepartie.scaleMode = 'linear'
+    const troisiemepartie = PIXI.Sprite.from(preTroisiemepartie);
+    troisiemepartie.anchor.x = 0.5
+    troisiemepartie.anchor.y = 0.5
+    troisiemepartie.x = app.screen.width /2
+    troisiemepartie.y = app.screen.height /1.68
+    troisiemepartie.scale.x = 2
+    troisiemepartie.scale.y = 2
+    app.stage.addChild(troisiemepartie);
+
+
+    // Ajout du bouton croix pr revenir au menu principal
+    const prebtncroix = PIXI.BaseTexture.from('sprites/btn-croix.png')
+    prebtncroix.scaleMode = 'linear'
+    const btncroix = PIXI.Sprite.from(prebtncroix);
+    btncroix.anchor.x = 0.5
+    btncroix.anchor.y = 0.5
+    btncroix.x = app.screen.width /2 + 400
+    btncroix.y = 30
+    btncroix.scale.x = 2
+    btncroix.scale.y = 2
+    app.stage.addChild(btncroix);
+
+   
+    // Gestion du bouton croix
+    btncroix.eventMode = 'dynamic';
+    btncroix.buttonMode = true;
+
+    //Fonction générée pour ouvrir à la page menu 
+    btncroix.on('pointerdown', playMenu) 
+    
+    }
+
+playParties();
+
+    
+
